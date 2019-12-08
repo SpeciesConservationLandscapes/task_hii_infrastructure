@@ -2,39 +2,546 @@ import ee
 from task_base import EETask
 
 
-class HIILanduse(EETask):
+class HIIInfrastructure(EETask):
     ee_rootdir = "projects/HII/v1/sumatra_poc"
-    ee_driverdir = 'driver/landuse'
+    ee_driverdir = 'driver/infrastructure'
     # if input lives in ee, it should have an "ee_path" pointing to an ImageCollection/FeatureCollection
     inputs = {
-        "gpw": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": "CIESIN/GPWv411/GPW_Population_Density",
+        "dir_aeroway_aerodrome_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_aerodrome_density_300m", 
         },
+        "dir_aeroway_apron_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_apron_density_300m",
+        },
+        "dir_aeroway_hangar_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_hangar_density_300m",
+        },
+        "dir_aeroway_helipad_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_helipad_density_300m",
+        },
+        "dir_aeroway_heliport_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_heliport_PG_density_300m",
+        },
+        "dir_aeroway_runway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_runway_density_300m",
+        },
+        "dir_aeroway_spaceport_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_spaceport_PG_density_300m",
+        },
+        "dir_aeroway_taxiway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_taxiway_density_300m",
+        },
+        "dir_aeroway_terminal_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_aeroway_terminal_PG_density_300m",
+        },
+        "dir_amenity_aerialway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_amenity_aerialway_density_300m",
+        },
+        "dir_amenity_alpinecampwild_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_amenity_alpinecampwild_density_300m",
+        },
+        "dir_leisure_beach_resort_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_leisure_beach_resort_density_300m",
+        },
+        "dir_amenity_fuel_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_amenity_fuel_density_300m",
+        },
+        "dir_leisure_golf_course_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_leisure_golf_course_PG_density_300m",
+        },
+        "dir_leisure_marina_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_leisure_marina_density_300m",
+        },
+        "dir_leisure_pitch_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_leisure_pitch_density_300m",
+        },
+        "dir_amenity_sanitary_dump_station_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_amenity_sanitary_dump_station_density_300m",
+        },
+        "dir_barrier_city_wall_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_barrier_city_wall_density_300m",
+        },
+        "dir_barrier_ditch_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_barrier_ditch_density_300m",
+        },
+        "dir_barrier_hedge_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_barrier_hedge_density_300m",
+        },
+        "dir_barrier_retaining_wall_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_barrier_retaining_wall_density_300m",
+        },
+        "dir_barrier_wall_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_barrier_wall_density_300m",
+        },
+        "dir_highway_bridleway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_bridleway_density_300m",
+        },
+        "dir_highway_bus_guideway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_bus_guideway_density_300m",
+        },
+        "dir_highway_cycleway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_cycleway_density_300m",
+        },
+        "dir_highway_elevator_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_elevator_density_300m",
+        },
+        "dir_highway_escape_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_escape_density_300m",
+        },
+        "dir_highway_footway_density_300mA": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_highway_footway_density_300mA",
+        },
+        "dir_highway_living_street_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_living_street_density_300m",
+        },
+        "dir_highway_mini_roundabout_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_mini_roundabout_density_300m",
+        },
+        "dir_highway_motorway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_motorway_density_300m",
+        },
+        "dir_highway_motorway_link_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_motorway_link_density_300m",
+        },
+        "dir_highway_path_density_300mA": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_highway_path_density_300mA",
+        },
+        "dir_highway_pedestrian_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_pedestrian_density_300m",
+        },
+        "dir_highway_primary_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_primary_density_300m",
+        },
+        "dir_highway_primary_link_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_primary_link_density_300m",
+        },
+        "dir_highway_raceway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_raceway_density_300m",
+        },
+        "dir_highway_rest_area_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_rest_area_density_300m",
+        },
+        "dir_highway_road_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_road_density_300m",
+        },
+        "dir_highway_secondary_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_secondary_density_300m",
+        },
+        "dir_highway_secondary_link_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_secondary_link_density_300m",
+        },
+        "dir_highway_service_density_300mA": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_service_density_300mA",
+        },
+        "dir_highway_steps_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_steps_density_300m",
+        },
+        "dir_highway_tertiary_density_300mA": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_highway_tertiary_density_300mA",
+        },
+        "dir_highway_tertiary_link_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_tertiary_link_density_300m",
+        },
+        "dir_highway_track_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/wcsbackup/osm_earth/dir_highway_track_density_300m",
+        },
+        "dir_highway_trunk_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_trunk_density_300m",
+        },
+        "dir_highway_trunk_link_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_trunk_link_density_300m",
+        },
+        "dir_highway_turning_circle_NO_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_highway_turning_circle_NO_density_300m",
+        },
+        "dir_highway_unclassified_density_300mA": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_highway_unclassified_density_300m_A",
+        },
+        "groads_additions": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/intact_default_CROP/groads_additions",
+        },
+        "dir_landuse_basin_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_basin_PG_density_300m",
+        },
+        "dir_landuse_cemetery_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_cemetery_PG_density_300m",
+        },
+        "dir_landuse_industrial_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_industrial_PG_density_300m",
+        },
+        "dir_landuse_landfill_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_landfill_density_300m",
+        },
+        "dir_landuse_quarry_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_quarry_density_300m",
+        },
+        "dir_landuse_salt_pond_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_salt_pond_PG_density_300m",
+        },
+        "dir_landuse_village_green_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_landuse_village_green_PG_density_300m",
+        },
+        "dir_man_made_adit_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_adit_density_300m",
+        },
+        "dir_man_made_beacon_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_beacon_density_300m",
+        },
+        "dir_man_made_breakwater_PG_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_breakwater_PG_density_300m",
+        },
+        "dir_man_made_chimney_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_chimney_density_300m",
+        },
+        "dir_man_made_communications_tower_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_communications_tower_density_300m",
+        },
+        "dir_man_made_dyke_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_dyke_density_300m",
+        },
+        "dir_man_made_embankment_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_embankment_density_300m",
+        },
+        "dir_man_made_gasometer_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_gasometer_density_300m",
+        },
+        "dir_man_made_groyne_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_groyne_density_300m",
+        },
+        "dir_man_made_lighthouse_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_lighthouse_density_300m",
+        },
+        "dir_man_made_mast_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_mast_density_300m",
+        },
+        "dir_man_made_mineshaft_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_mineshaft_density_300m",
+        },
+        "dir_man_made_observatorytelescope_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_man_made_observatorytelescope_density_300m",
+        },
+        "dir_man_made_petroleum_well_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_petroleum_well_density_300m",
+        },
+        "dir_man_made_pier_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_pier_density_300m",
+        },
+        "dir_man_made_pipeline_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_pipeline_density_300m",
+        },
+        "dir_man_made_pumping_station_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_pumping_station_density_300m",
+        },
+        "dir_man_made_reservoir_covered_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_reservoir_covered_density_300m",
+        },
+        "dir_man_made_silo_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_silo_density_300m",
+        },
+        "dir_man_made_snow_fence_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_snow_fence_density_300m",
+        },
+        "dir_man_made_storage_tank_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_storage_tank_density_300m",
+        },
+        "dir_man_made_tower_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_tower_density_300m",
+        },
+        "dir_man_made_wastewater_plant_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_wastewater_plant_density_300m",
+        },
+        "dir_man_made_watermill_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_watermill_density_300m",
+        },
+        "dir_man_made_water_tower_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_water_tower_density_300m",
+        },
+        "dir_man_made_water_well_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_water_well_density_300m",
+        },
+        "dir_man_made_water_works_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_water_works_density_300m",
+        },
+        "dir_man_made_windmill_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_windmill_density_300m",
+        },
+        "dir_man_made_works_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_man_made_works_density_300m",
+        },
+        "dir_military_airfield_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_airfield_density_300m",
+        },
+        "dir_military_ammunition_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_ammunition_density_300m",
+        },
+        "dir_military_barracks_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_barracks_density_300m",
+        },
+        "dir_military_bunker_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/aduncan/osm_earth/dir_military_bunker_density_300m",
+        },
+        "dir_military_checkpoint_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_checkpoint_density_300m",
+        },
+        "dir_military_danger_area_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_danger_area_density_300m",
+        },
+        "dir_military_naval_base_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_naval_base_density_300m",
+        },
+        "dir_military_nuclear_explosion_site_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_nuclear_explosion_site_density_300m",
+        },
+        "dir_military_range_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_range_density_300m",
+        },
+        "dir_military_trench_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_military_trench_density_300m",
+        },
+        "dir_power_cable_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_cable_density_300m",
+        },
+        "dir_power_heliostat_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_heliostat_density_300m",
+        },
+        "dir_power_line_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_line_density_300m",
+        },
+        "dir_power_substation_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_substation_density_300m",
+        },
+        "dir_power_xbio_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xbio_density_300m",
+        },
+        "dir_power_xcoal_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xcoal_density_300m",
+        },
+        "dir_power_xhydro_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xhydro_density_300m",
+        },
+        "dir_power_xnuclear_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xnuclear_density_300m",
+        },
+        "dir_power_xoil_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xoil_density_300m",
+        },
+        "dir_power_xother_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xother_density_300m",
+        },
+        "dir_power_xsolar_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xsolar_density_300m",
+        },
+        "dir_power_xwaste_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xwaste_density_300m",
+        },
+        "dir_power_xwind_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_power_xwind_density_300m",
+        },
+        "dir_railway_abandoned_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_abandoned_density_300m",
+        },
+        "dir_railway_disused_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_disused_density_300m",
+        },
+        "dir_railway_funicular_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_funicular_density_300m",
+        },
+        "dir_railway_halt_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_halt_density_300m",
+        },
+        "dir_railway_light_rail_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_light_rail_density_300m",
+        },
+        "dir_railway_miniature_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_miniature_density_300m",
+        },
+        "dir_railway_monorail_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_monorail_density_300m",
+        },
+        "dir_railway_narrow_gauge_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_narrow_gauge_density_300m",
+        },
+        "dir_railway_platform_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_platform_density_300m",
+        },
+        "dir_railway_preserved_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_preserved_density_300m",
+        },
+        "dir_railway_rail_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_rail_density_300m",
+        },
+        "dir_railway_station_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_station_density_300m",
+        },
+        "dir_railway_subway_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_subway_density_300m",
+        },
+        "dir_railway_tram_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_railway_tram_density_300m",
+        },
+        "dir_waterway_canal_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_waterway_canal_density_300m",
+        },
+        "dir_waterway_dam_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_waterway_dam_density_300m",
+        },
+        "dir_waterway_ditch_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_waterway_ditch_density_300m",
+        },
+        "dir_waterway_drain_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_waterway_drain_density_300m",
+        },
+        "dir_waterway_lock_gate_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_waterway_lock_gate_density_300m",
+        },
+        "dir_waterway_weir_density_300m": {
+            "ee_type": EETask.IMAGE,
+            "ee_path": "users/yourecoveredinbees/osm_earth/dir_waterway_weir_density_300m",
+        },
+
         "jrc": {
             "ee_type": EETask.IMAGE,
             "ee_path": "JRC/GSW1_0/GlobalSurfaceWater"
         },
         "caspian": {
-            "ee_type": EETask.IMAGE,
+            "ee_type": EETask.FEATURECOLLECTION,
             "ee_path": "users/aduncan/caspian"
         },
-        "gpw_2015": {
+        "ocean": {
             "ee_type": EETask.IMAGE,
-            "ee_path": "CIESIN/GPWv411/GPW_Population_Density/gpw_v4_population_density_rev11_2015_30_sec"
-        },
-        "esacci": {
-            "ee_type": EETask.IMAGE,
-            "ee_path": "users/aduncan/cci/ESACCI-LC-L4-LCCS-Map-300m-P1Y-1992_2015-v207"
+            "ee_path": "users/aduncan/cci/ESACCI-LC-L4-WB-Ocean-Map-150m-P13Y-2000-v40",
         }
-    }
+            }
     
-
-    def FUNC_IC(item,image_coll):
-        year_property = ee.Number(item).add(1992)
-        single_year = ee.ImageCollection([ESACCI.select([item]).set('year',year_property)])
-        return ee.ImageCollection(image_coll).merge(single_year)
-  
 
 
 
@@ -44,52 +551,245 @@ class HIILanduse(EETask):
         super().__init__(*args, **kwargs)
         self.set_aoi_from_ee("{}/sumatra_poc_aoi".format(self.ee_rootdir))
 
-    #def test_function(number):
-    #    print(number)
 
-    #print(test_function(5555555555555))
-
-    def square(x):
-      square = x * x
-      return square
-
-    test1 = 'test1'
-
-    def something(self):
-      something_else = self.test1
-      return something_else
 
     def calc(self):
-        print(self.test1) # works
-        print(self.something()) # works
 
-        ESACCI = ee.ImageCollection(self.inputs['esacci']['ee_path'])
-        year_list =   ee.List.sequence(0,23)
-        ESACCI_ic =   ee.ImageCollection(year_list.iterate(FUNC_IC(), ee.ImageCollection([])))
+        caspian = ee.FeatureCollection(self.inputs['caspian']['ee_path'])
 
-        print(year_list.getInfo())
+        jrc = ee.Image(self.inputs['jrc']['ee_path'])\
+                        .select('occurrence')\
+                        .lte(75)\
+                        .unmask(1)\
+                        .multiply(ee.Image(0).clip(caspian).unmask(1))
+
+        ocean = ee.Image(self.inputs['ocean']['ee_path'])
+
+
+ 
+        rast_aeroway_density_300m_direct = ee.Image(self.inputs['dir_aeroway_aerodrome_density_300m']['ee_path']).multiply(10)\
+                                .add(ee.Image(self.inputs['dir_aeroway_apron_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_hangar_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_helipad_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_heliport_PG_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_runway_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_spaceport_PG_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_taxiway_density_300m']['ee_path']).multiply(10))\
+                                .add(ee.Image(self.inputs['dir_aeroway_terminal_PG_density_300m']['ee_path']).multiply(10))
+                                
+                                
+
+
+        rast_amen_tour_leis_aerial_density_300m_direct = ee.Image(self.inputs['dir_amenity_aerialway_density_300m']['ee_path']).multiply((5))\
+                                .add(ee.Image(self.inputs['dir_amenity_alpinecampwild_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_leisure_beach_resort_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_amenity_fuel_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_leisure_golf_course_PG_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_leisure_marina_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_leisure_pitch_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_amenity_sanitary_dump_station_density_300m']['ee_path']).multiply((10)))
+                                
+
+ 
+        rast_barrier_density_300m_direct = ee.Image(self.inputs['dir_barrier_city_wall_density_300m']['ee_path']).multiply((8))\
+                                .add(ee.Image(self.inputs['dir_barrier_ditch_density_300m']['ee_path']).multiply((8)))\
+                                .add(ee.Image(self.inputs['dir_barrier_hedge_density_300m']['ee_path']).multiply((2)))\
+                                .add(ee.Image(self.inputs['dir_barrier_retaining_wall_density_300m']['ee_path']).multiply((8)))\
+                                .add(ee.Image(self.inputs['dir_barrier_wall_density_300m']['ee_path']).multiply((8)))
+                                
+
+
+
+        
+        rast_highway_density_300m_direct = ee.Image(self.inputs['dir_highway_bridleway_density_300m']['ee_path']).multiply((4))\
+                                .add(ee.Image(self.inputs['dir_highway_bus_guideway_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_cycleway_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_elevator_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_escape_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_footway_density_300mA']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_living_street_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_mini_roundabout_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_motorway_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_motorway_link_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_path_density_300mA']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_pedestrian_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_primary_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_primary_link_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_raceway_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_rest_area_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_road_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_secondary_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_secondary_link_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_service_density_300mA']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_steps_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_tertiary_density_300mA']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_tertiary_link_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_track_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_highway_trunk_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_trunk_link_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_turning_circle_NO_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_highway_unclassified_density_300mA']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['groads_additions']['ee_path']).multiply((10)))
+                             
+
+
+
+
+        rast_landuse_density_300m_direct = ee.Image(self.inputs['dir_landuse_basin_PG_density_300m']['ee_path']).multiply((10))\
+                                .add(ee.Image(self.inputs['dir_landuse_cemetery_PG_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_landuse_industrial_PG_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_landuse_landfill_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_landuse_quarry_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_landuse_salt_pond_PG_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_landuse_village_green_PG_density_300m']['ee_path']).multiply((4)))
+                                
 
 
 
 
 
-        gpw_2015 = ee.ImageCollection(self.inputs['gpw_2015']['ee_path'])
 
-        ee_taskdate = ee.Date(self.taskdate.strftime(self.DATE_FORMAT))
-        gpw_prior = gpw.filterDate(ee_taskdate.advance(-self.gpw_cadence, 'year'), ee_taskdate).first()
-        gpw_later = gpw.filterDate(ee_taskdate, ee_taskdate.advance(self.gpw_cadence, 'year')).first()
-        gpw_diff = gpw_later.subtract(gpw_prior)
-        numerator = ee_taskdate.difference(gpw_prior.date(), 'day')
-        gpw_diff_fraction = gpw_diff.multiply(numerator.divide(self.gpw_cadence * 365))
-        gpw_taskdate = gpw_prior.add(gpw_diff_fraction)
-        gpw_taskdate_300m = gpw_taskdate.resample().reproject(crs=self.crs, scale=self.scale)
+        rast_manmade_density_300m_direct = ee.Image(self.inputs['dir_man_made_adit_density_300m']['ee_path']).multiply((10))\
+                                .add(ee.Image(self.inputs['dir_man_made_beacon_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_breakwater_PG_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_chimney_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_communications_tower_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_dyke_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_embankment_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_gasometer_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_groyne_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_lighthouse_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_mast_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_mineshaft_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_observatorytelescope_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_petroleum_well_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_pier_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_pipeline_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_pumping_station_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_reservoir_covered_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_silo_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_snow_fence_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_storage_tank_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_tower_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_wastewater_plant_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_watermill_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_water_tower_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_water_well_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_water_works_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_windmill_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_man_made_works_density_300m']['ee_path']).multiply((10)))
+                                
+                                
 
-        gpw_venter = gpw_taskdate_300m.add(ee.Image(1))\
-            .log()\
-            .multiply(ee.Image(3.333))
-        # TODO: mask water with centralized HII-defined water images
 
-        #self.export_image_ee(gpw_venter, '{}/{}'.format(self.ee_driverdir, 'hii_popdens_driver'))
+
+
+
+        rast_military_density_300m_direct = ee.Image(self.inputs['dir_military_airfield_density_300m']['ee_path']).multiply((10))\
+                                .add(ee.Image(self.inputs['dir_military_ammunition_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_military_barracks_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_military_bunker_density_300m']['ee_path']).multiply((10))) \
+                                .add(ee.Image(self.inputs['dir_military_checkpoint_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_military_danger_area_density_300m']['ee_path']).multiply((8)))\
+                                .add(ee.Image(self.inputs['dir_military_naval_base_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_military_nuclear_explosion_site_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_military_range_density_300m']['ee_path']).multiply((8)))\
+                                .add(ee.Image(self.inputs['dir_military_trench_density_300m']['ee_path']).multiply((8)))
+                                
+
+
+
+        rast_power_density_300m_direct = ee.Image(self.inputs['dir_power_cable_density_300m']['ee_path']).multiply((8))\
+                                .add(ee.Image(self.inputs['dir_power_heliostat_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_line_density_300m']['ee_path']).multiply((8)))\
+                                .add(ee.Image(self.inputs['dir_power_substation_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xbio_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xcoal_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xhydro_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xnuclear_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xoil_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xother_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xsolar_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xwaste_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_power_xwind_density_300m']['ee_path']).multiply((10)))
+                                
+
+
+
+
+        rast_railway_density_300m_direct = ee.Image(self.inputs['dir_railway_abandoned_density_300m']['ee_path']).multiply((4))\
+                                .add(ee.Image(self.inputs['dir_railway_disused_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_railway_funicular_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_halt_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_light_rail_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_miniature_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_monorail_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_narrow_gauge_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_platform_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_preserved_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_rail_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_station_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_subway_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_railway_tram_density_300m']['ee_path']).multiply((10)))
+                                
+
+
+
+
+        rast_waterway_density_300m_direct = ee.Image(self.inputs['dir_waterway_canal_density_300m']['ee_path']).multiply((10))\
+                                .add(ee.Image(self.inputs['dir_waterway_dam_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_waterway_ditch_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_waterway_drain_density_300m']['ee_path']).multiply((4)))\
+                                .add(ee.Image(self.inputs['dir_waterway_lock_gate_density_300m']['ee_path']).multiply((10)))\
+                                .add(ee.Image(self.inputs['dir_waterway_weir_density_300m']['ee_path']).multiply((4)))
+                                
+
+
+        osm = rast_aeroway_density_300m_direct\
+                              .add(rast_amen_tour_leis_aerial_density_300m_direct)\
+                              .add(rast_barrier_density_300m_direct)\
+                              .add(rast_landuse_density_300m_direct)\
+                              .add(rast_manmade_density_300m_direct)\
+                              .add(rast_military_density_300m_direct)\
+                              .add(rast_power_density_300m_direct)\
+                              .add(rast_waterway_density_300m_direct)\
+                              .multiply(2)
+                              
+                              #.add(rast_highway_density_300m_direct)\
+                              #.add(rast_railway_density_300m_direct)\
+
+
+        #NEED TO REDO BELOW INCORPORATING WEIGHTINGS AND ELIMINATING 500M BUFFER
+        #roads 500m
+        roads_bool = rast_highway_density_300m_direct.gt(0).multiply(2)
+        roads_500m = roads_bool.reduceNeighborhood(reducer=ee.Reducer.max(), kernel=ee.Kernel.square(1,'pixels'))\
+                          .reproject(crs='EPSG:4326',scale=300)
+
+
+        DECAY_CONSTANT = -0.0002
+        INDIRECT_INFLUENCE = 4
+        roads_indirect = roads_bool.eq(0).cumulativeCost(roads_bool,15000).reproject(crs='EPSG:4326',scale=300).unmask(0)\
+                                        .multiply(DECAY_CONSTANT).exp()\
+                                        .multiply(INDIRECT_INFLUENCE)
+                                        
+
+        roads_total = roads_500m.add(roads_indirect)
+        roads_total = roads_total.where(roads_total.gt(8),8)
+
+
+        #rail 500m
+        rail_bool = rast_railway_density_300m_direct.gt(0).multiply(2)
+        rail_500m = rail_bool.reduceNeighborhood(reducer=ee.Reducer.max(), kernel=ee.Kernel.square(1,'pixels'))\
+                          .reproject(crs='EPSG:4326',scale=300)
+                          
+
+
+        current_infra = roads_total.add(rail_500m).add(osm)\
+                                                .updateMask(jrc)\
+                                                .updateMask(ocean)
+
+        self.export_image_ee(current_infra, '{}/{}'.format(self.ee_driverdir, 'hii_infrastructure_driver'))
+
 
     def check_inputs(self):
         super().check_inputs()
@@ -97,5 +797,5 @@ class HIILanduse(EETask):
 
 
 if __name__ == "__main__":
-    landuse_task = HIILanduse()
-    landuse_task.run()
+    infrastructure_task = HIIInfrastructure()
+    infrastructure_task.run()
