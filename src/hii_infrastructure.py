@@ -543,6 +543,7 @@ class HIIInfrastructure(EETask):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.set_aoi_from_ee("{}/sumatra_poc_aoi".format(self.ee_rootdir))
+        #print(self.aoi)
 
 
 
@@ -725,7 +726,6 @@ class HIIInfrastructure(EETask):
                           
         current_infra = roads_total.add(rail_500m).add(osm)\
                                                 .updateMask(watermask)
-
         self.export_image_ee(current_infra, '{}/{}'.format(self.ee_driverdir, 'hii_infrastructure_driver'))
 
     def check_inputs(self):
