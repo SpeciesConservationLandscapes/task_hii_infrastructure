@@ -10,7 +10,7 @@ class HIIInfrastructure(EETask):
     ee_hiistatic_osm = "projects/HII/v1/source/osm_earth/"
     ee_hiistatic_infra = "projects/HII/v1/source/infra/"
     ee_hiistatic_physical = "projects/HII/v1/source/phys/"
-    scale = 300  # TODO: Should this be EETask default / scale for other tasks, i.e. 1000?
+    scale = 300
     DECAY_CONSTANT = -0.0002
     INDIRECT_INFLUENCE = 4
 
@@ -539,14 +539,16 @@ class HIIInfrastructure(EETask):
         "watermask": {
             "ee_type": EETask.IMAGE,
             "ee_path": f"{ee_hiistatic_physical}watermask_jrc70_cciocean",
+            "maxage": 30,
         },
     }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # TODO: remove static from inputs once OSM task is in place
+        for i in self.inputs:
+            self.inputs[i]["static"] = True
         self.set_aoi_from_ee("{}/sumatra_poc_aoi".format(self.ee_rootdir))
-        print(self.aoi)
-        exit()
 
     def calc(self):
         watermask = ee.Image(self.inputs["watermask"]["ee_path"])
@@ -1251,7 +1253,6 @@ class HIIInfrastructure(EETask):
 
     def check_inputs(self):
         super().check_inputs()
-        # add any task-specific checks here, and set self.status = self.FAILED if any fail
 
 
 if __name__ == "__main__":
