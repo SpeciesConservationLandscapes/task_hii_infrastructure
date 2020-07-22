@@ -36,37 +36,6 @@ class HIIInfrastructure(EETask):
     barrier_retaining_wall_weighting = 8
     barrier_wall_weighting = 8
 
-    highway_bridleway_weighting = 10
-    highway_bus_guideway_weighting = 10
-    highway_cycleway_weighting = 10
-    highway_elevator_weighting = 10
-    highway_escape_weighting = 4
-    highway_footway_weighting = 4
-    highway_living_street_weighting = 10
-    highway_mini_roundabout_weighting = 10
-    highway_motorway_weighting = 10
-    highway_motorway_link_weighting = 10
-    highway_path_weighting = 4
-    highway_pedestrian_weighting = 4
-    highway_primary_weighting = 10
-    highway_primary_link_weighting = 10
-    highway_raceway_weighting = 10
-    highway_rest_area_weighting = 10
-    highway_road_weighting = 10
-    highway_secondary_weighting = 10
-    highway_secondary_link_weighting = 10
-    highway_service_weighting = 10
-    highway_steps_weighting = 4
-    highway_tertiary_weighting = 10
-    highway_tertiary_link_weighting = 10
-    highway_track_weighting = 4
-    highway_trunk_weighting = 10
-    highway_trunk_link_weighting = 10
-    highway_turning_circle_weighting = 10
-    highway_unclassified_weighting = 10
-
-    highway_groads_weighting = 10
-
     landuse_basin_weighting = 10
     landuse_cemetery_weighting = 4
     landuse_industrial_weighting = 10
@@ -134,21 +103,6 @@ class HIIInfrastructure(EETask):
     power_xsolar_weighting = 10
     power_xwaste_weighting = 10
     power_xwind_weighting = 10
-
-    railway_abandoned_weighting = 4
-    railway_disused_weighting = 4
-    railway_funicular_weighting = 10
-    railway_halt_weighting = 10
-    railway_light_rail_weighting = 10
-    railway_miniature_weighting = 10
-    railway_monorail_weighting = 10
-    railway_narrow_gauge_weighting = 10
-    railway_platform_weighting = 10
-    railway_preserved_weighting = 10
-    railway_rail_weighting = 10
-    railway_station_weighting = 10
-    railway_subway_weighting = 10
-    railway_tram_weighting = 10
 
     waterway_canal_weighting = 10
     waterway_dam_weighting = 10
@@ -246,122 +200,6 @@ class HIIInfrastructure(EETask):
         "barrier_wall": {
             "ee_type": EETask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}barrier/wall",
-        },
-        "highway_bridleway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/bridleway",
-        },
-        "highway_bus_guideway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/bus_guideway",
-        },
-        "highway_cycleway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/cycleway",
-        },
-        "highway_elevator": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/elevator",
-        },
-        "highway_escape": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/escape",
-        },
-        "highway_footway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/footway",
-        },
-        "highway_living_street": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/living_street",
-        },
-        "highway_mini_roundabout": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/mini_roundabout",
-        },
-        "highway_motorway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/motorway",
-        },
-        "highway_motorway_link": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/motorway_link",
-        },
-        "highway_path": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/path",
-        },
-        "highway_pedestrian": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/pedestrian",
-        },
-        "highway_primary": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/primary",
-        },
-        "highway_primary_link": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/primary_link",
-        },
-        "highway_raceway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/raceway",
-        },
-        "highway_rest_area": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/rest_area",
-        },
-        "highway_road": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/road",
-        },
-        "highway_secondary": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/secondary",
-        },
-        "highway_secondary_link": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/secondary_link",
-        },
-        "highway_service": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/service",
-        },
-        "highway_steps": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/steps",
-        },
-        "highway_tertiary": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/tertiary",
-        },
-        "highway_tertiary_link": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/tertiary_link",
-        },
-        "highway_track": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/track",
-        },
-        "highway_trunk": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/trunk",
-        },
-        "highway_trunk_link": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/trunk_link",
-        },
-        "highway_turning_circle": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/turning_circle",
-        },
-        "highway_unclassified": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}highway/unclassified",
-        },
-        "groads_additions": {
-            "ee_type": EETask.IMAGE,
-            "ee_path": f"{ee_hiistatic_infra}groads_additions",
         },
         "landuse_basin": {
             "ee_type": EETask.IMAGECOLLECTION,
@@ -599,62 +437,6 @@ class HIIInfrastructure(EETask):
             "ee_type": EETask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xwind",
         },
-        "railway_abandoned": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/abandoned",
-        },
-        "railway_disused": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/disused",
-        },
-        "railway_funicular": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/funicular",
-        },
-        "railway_halt": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/halt",
-        },
-        "railway_light_rail": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/light_rail",
-        },
-        "railway_miniature": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/miniature",
-        },
-        "railway_monorail": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/monorail",
-        },
-        "railway_narrow_gauge": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/narrow_gauge",
-        },
-        "railway_platform": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/platform",
-        },
-        "railway_preserved": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/preserved",
-        },
-        "railway_rail": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/rail",
-        },
-        "railway_station": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/station",
-        },
-        "railway_subway": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/subway",
-        },
-        "railway_tram": {
-            "ee_type": EETask.IMAGECOLLECTION,
-            "ee_path": f"{ee_hiistatic_osm}railway/tram",
-        },
         "waterway_canal": {
             "ee_type": EETask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/canal",
@@ -682,15 +464,13 @@ class HIIInfrastructure(EETask):
         "watermask": {
             "ee_type": EETask.IMAGE,
             "ee_path": f"{ee_hiistatic_physical}watermask_jrc70_cciocean",
-            "maxage": 30,
+            "maxage": 40,
         },
     }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # TODO: remove static from inputs once OSM task is in place
-        for i in self.inputs:
-            self.inputs[i]["static"] = True
+
         self.set_aoi_from_ee("{}/sumatra_poc_aoi".format(self.ee_rootdir))
 
     def calc(self):
@@ -770,119 +550,6 @@ class HIIInfrastructure(EETask):
             ee.ImageCollection(self.inputs["barrier_wall"]["ee_path"])
         )
         
-
-        highway_bridleway, highway_bridleway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_bridleway"]["ee_path"])
-        )
-        
-        highway_bus_guideway, highway_bus_guideway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_bus_guideway"]["ee_path"])
-        )
-        
-        highway_cycleway, highway_cycleway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_cycleway"]["ee_path"])
-        )
-        
-        highway_elevator, highway_elevator_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_elevator"]["ee_path"])
-        )
-        
-        highway_escape, highway_escape_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_escape"]["ee_path"])
-        )
-        
-        highway_footway, highway_footway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_footway"]["ee_path"])
-        )
-        
-        highway_living_street, highway_living_street_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_living_street"]["ee_path"])
-        )
-        
-        highway_mini_roundabout, highway_mini_roundabout_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_mini_roundabout"]["ee_path"])
-        )
-
-        highway_motorway, highway_motorway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_motorway"]["ee_path"])
-        )
-
-        highway_motorway_link, highway_motorway_link_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_motorway_link"]["ee_path"])
-        )
-        
-        highway_path, highway_path_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_path"]["ee_path"])
-        )
-        
-        highway_pedestrian, highway_pedestrian_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_pedestrian"]["ee_path"])
-        )
-        
-        highway_primary, highway_primary_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_primary"]["ee_path"])
-        )
-        
-        highway_primary_link, highway_primary_link_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_primary_link"]["ee_path"])
-        )
-        
-        highway_raceway, highway_raceway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_raceway"]["ee_path"])
-        )
-        
-        highway_rest_area, highway_rest_area_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_rest_area"]["ee_path"])
-        )
-        
-        highway_road, highway_road_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_road"]["ee_path"])
-        )
-
-        highway_secondary, highway_secondary_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_secondary"]["ee_path"])
-        )
-
-        highway_secondary_link, highway_secondary_link_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_secondary_link"]["ee_path"])
-        )
-        
-        highway_service, highway_service_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_service"]["ee_path"])
-        )
-        
-        highway_steps, highway_steps_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_steps"]["ee_path"])
-        )
-        
-        highway_tertiary, highway_tertiary_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_tertiary"]["ee_path"])
-        )
-        
-        highway_tertiary_link, highway_tertiary_link_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_tertiary_link"]["ee_path"])
-        )
-        
-        highway_track, highway_track_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_track"]["ee_path"])
-        )
-        
-        highway_trunk, highway_trunk_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_trunk"]["ee_path"])
-        )
-        
-        highway_trunk_link, highway_trunk_link_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_trunk_link"]["ee_path"])
-        )
-
-        highway_turning_circle, highway_turning_circle_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_turning_circle"]["ee_path"])
-        )
-
-        highway_unclassified, highway_unclassified_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["highway_unclassified"]["ee_path"])
-        )
-
 
         landuse_basin, landuse_basin_date = self.get_most_recent_image(
             ee.ImageCollection(self.inputs["landuse_basin"]["ee_path"])
@@ -1141,63 +808,6 @@ class HIIInfrastructure(EETask):
         )
 
 
-        railway_abandoned, railway_abandoned_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_abandoned"]["ee_path"])
-        )
-        
-        railway_disused, railway_disused_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_disused"]["ee_path"])
-        )
-        
-        railway_funicular, railway_funicular_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_funicular"]["ee_path"])
-        )
-        
-        railway_halt, railway_halt_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_halt"]["ee_path"])
-        )
-        
-        railway_light_rail, railway_light_rail_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_light_rail"]["ee_path"])
-        )
-        
-        railway_miniature, railway_miniature_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_miniature"]["ee_path"])
-        )
-        
-        railway_monorail, railway_monorail_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_monorail"]["ee_path"])
-        )
-        
-        railway_narrow_gauge, railway_narrow_gauge_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_narrow_gauge"]["ee_path"])
-        )
-
-        railway_platform, railway_platform_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_platform"]["ee_path"])
-        )
-
-        railway_preserved, railway_preserved_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_preserved"]["ee_path"])
-        )
-        
-        railway_rail, railway_rail_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_rail"]["ee_path"])
-        )
-        
-        railway_station, railway_station_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_station"]["ee_path"])
-        )
-        
-        railway_subway, railway_subway_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_subway"]["ee_path"])
-        )
-        
-        railway_tram, railway_tram_date = self.get_most_recent_image(
-            ee.ImageCollection(self.inputs["railway_tram"]["ee_path"])
-        )
-        
-
         waterway_canal, waterway_canal_date = self.get_most_recent_image(
             ee.ImageCollection(self.inputs["waterway_canal"]["ee_path"])
         )
@@ -1246,37 +856,6 @@ class HIIInfrastructure(EETask):
             .add(barrier_hedge.multiply(self.barrier_hedge_weighting))
             .add(barrier_retaining_wall.multiply(self.barrier_retaining_wall_weighting))
             .add(barrier_wall.multiply(self.barrier_wall_weighting))
-        )
-
-        highway_total = (highway_bridleway.multiply(self.highway_bridleway_weighting)
-            .add(highway_bus_guideway.multiply(self.highway_bus_guideway_weighting))
-            .add(highway_cycleway.multiply(self.highway_cycleway_weighting))
-            .add(highway_elevator.multiply(self.highway_elevator_weighting))
-            .add(highway_escape.multiply(self.highway_escape_weighting))
-            .add(highway_footway.multiply(self.highway_footway_weighting))
-            .add(highway_living_street.multiply(self.highway_living_street_weighting))
-            .add(highway_mini_roundabout.multiply(self.highway_mini_roundabout_weighting))
-            .add(highway_motorway.multiply(self.highway_motorway_weighting))
-            .add(highway_motorway_link.multiply(self.highway_motorway_link_weighting))
-            .add(highway_path.multiply(self.highway_path_weighting))
-            .add(highway_pedestrian.multiply(self.highway_pedestrian_weighting))
-            .add(highway_primary.multiply(self.highway_primary_weighting))
-            .add(highway_primary_link.multiply(self.highway_primary_link_weighting))
-            .add(highway_raceway.multiply(self.highway_raceway_weighting))
-            .add(highway_rest_area.multiply(self.highway_rest_area_weighting))
-            .add(highway_road.multiply(self.highway_road_weighting))
-            .add(highway_secondary.multiply(self.highway_secondary_weighting))
-            .add(highway_secondary_link.multiply(self.highway_secondary_link_weighting))
-            .add(highway_service.multiply(self.highway_service_weighting))
-            .add(highway_steps.multiply(self.highway_steps_weighting))
-            .add(highway_tertiary.multiply(self.highway_tertiary_weighting))
-            .add(highway_tertiary_link.multiply(self.highway_tertiary_link_weighting))
-            .add(highway_track.multiply(self.highway_track_weighting))
-            .add(highway_trunk.multiply(self.highway_trunk_weighting))
-            .add(highway_trunk_link.multiply(self.highway_trunk_link_weighting))
-            .add(highway_turning_circle.multiply(self.highway_turning_circle_weighting))
-            .add(highway_unclassified.multiply(self.highway_unclassified_weighting))
-            .add(ee.Image(self.inputs["groads_additions"]["ee_path"]).multiply(self.highway_groads_weighting))
         )
 
         landuse_total = (landuse_basin.multiply(self.landuse_basin_weighting)
@@ -1352,22 +931,6 @@ class HIIInfrastructure(EETask):
             .add(power_xwind.multiply(self.power_xwind_weighting))
         )
 
-        railway_total = (railway_abandoned.multiply(self.railway_abandoned_weighting)
-            .add(railway_disused.multiply(self.railway_disused_weighting))
-            .add(railway_funicular.multiply(self.railway_funicular_weighting))
-            .add(railway_halt.multiply(self.railway_halt_weighting))
-            .add(railway_light_rail.multiply(self.railway_light_rail_weighting))
-            .add(railway_miniature.multiply(self.railway_miniature_weighting))
-            .add(railway_monorail.multiply(self.railway_monorail_weighting))
-            .add(railway_narrow_gauge.multiply(self.railway_narrow_gauge_weighting))
-            .add(railway_platform.multiply(self.railway_platform_weighting))
-            .add(railway_preserved.multiply(self.railway_preserved_weighting))
-            .add(railway_rail.multiply(self.railway_rail_weighting))
-            .add(railway_station.multiply(self.railway_station_weighting))
-            .add(railway_subway.multiply(self.railway_subway_weighting))
-            .add(railway_tram.multiply(self.railway_tram_weighting))
-        )
-
         waterway_total = (waterway_canal.multiply(self.waterway_canal_weighting)
             .add(waterway_dam.multiply(self.waterway_dam_weighting))
             .add(waterway_ditch.multiply(self.waterway_ditch_weighting))
@@ -1388,29 +951,8 @@ class HIIInfrastructure(EETask):
             .multiply(2)
 
 
-        # TODO: incorporate weightings and eliminate 500m buffer
-        roads_bool = highway_total.gt(0).multiply(2)
-        roads_500m = roads_bool.reduceNeighborhood(
-            reducer=ee.Reducer.max(), kernel=ee.Kernel.square(1, "pixels")
-        ).reproject(crs=self.crs, scale=self.scale)
 
-        roads_indirect = roads_bool.eq(0)\
-            .cumulativeCost(roads_bool, 15000)\
-            .reproject(crs=self.crs, scale=self.scale)\
-            .multiply(self.DECAY_CONSTANT)\
-            .exp()\
-            .multiply(self.INDIRECT_INFLUENCE)\
-            .unmask(0)
-
-        roads_total = roads_500m.add(roads_indirect)
-        roads_total = roads_total.where(roads_total.gt(8), 8)
-
-        rail_bool = railway_total.gt(0).multiply(2)
-        rail_500m = rail_bool.reduceNeighborhood(
-            reducer=ee.Reducer.max(), kernel=ee.Kernel.square(1, "pixels")
-        ).reproject(crs=self.crs, scale=self.scale)
-
-        current_infra = roads_total.add(rail_500m).add(osm).updateMask(watermask)
+        current_infra = osm.updateMask(watermask)
 
         self.export_image_ee(
             current_infra,
