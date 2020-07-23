@@ -464,7 +464,7 @@ class HIIInfrastructure(EETask):
         "watermask": {
             "ee_type": EETask.IMAGE,
             "ee_path": f"{ee_hiistatic_physical}watermask_jrc70_cciocean",
-            "maxage": 40,
+            "static": True,
         },
     }
 
