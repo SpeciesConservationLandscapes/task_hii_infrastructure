@@ -1,11 +1,11 @@
 import argparse
 import ee
 from datetime import datetime, timezone
-from task_base import EETask
+from task_base import HIITask
 
 
-class HIIInfrastructure(EETask):
-    ee_rootdir = "projects/HII/v1/sumatra_poc"
+class HIIInfrastructure(HIITask):
+    ee_rootdir = "projects/HII/v1"
     ee_driverdir = "driver/infrastructure"
     ee_hiistatic_osm = "projects/HII/v1/source/osm_earth/"
     ee_hiistatic_infra = "projects/HII/v1/source/infra/"
@@ -114,355 +114,355 @@ class HIIInfrastructure(EETask):
 
     inputs = {
         "aeroway_aerodrome": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/aerodrome",
         },
         "aeroway_apron": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/apron",
         },
         "aeroway_hangar": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/hangar",
         },
         "aeroway_helipad": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/helipad",
         },
         "aeroway_heliport": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/heliport",
         },
         "aeroway_runway": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/runway",
         },
         "aeroway_spaceport": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/spaceport",
         },
         "aeroway_taxiway": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/taxiway",
         },
         "aeroway_terminal": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}aeroway/terminal",
         },
         "amenity_aerialway": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}amenity/aerialway",
         },
         "amenity_alpinecampwild": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}amenity/alpinecampwild",
         },
         "leisure_beach_resort": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}leisure/beach_resort",
         },
         "amenity_fuel": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}amenity/fuel",
         },
         "leisure_golf_course": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}leisure/golf_course",
         },
         "leisure_marina": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}leisure/marina",
         },
         "leisure_pitch": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}leisure/pitch",
         },
         "amenity_sanitary_dump_station": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}amenity/sanitary_dump_station",
         },
         "barrier_city_wall": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}barrier/city_wall",
         },
         "barrier_ditch": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}barrier/ditch",
         },
         "barrier_hedge": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}barrier/hedge",
         },
         "barrier_retaining_wall": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}barrier/retaining_wall",
         },
         "barrier_wall": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}barrier/wall",
         },
         "landuse_basin": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/basin",
         },
         "landuse_cemetery": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/cemetery",
         },
         "landuse_industrial": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/industrial",
         },
         "landuse_landfill": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/landfill",
         },
         "landuse_quarry": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/quarry",
         },
         "landuse_salt_pond": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/salt_pond",
         },
         "landuse_village_green": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}landuse/village_green",
         },
         "man_made_adit": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/adit",
         },
         "man_made_beacon": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/beacon",
         },
         "man_made_breakwater": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/breakwater",
         },
         "man_made_chimney": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/chimney",
         },
         "man_made_communications_tower": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/communications_tower",
         },
         "man_made_dyke": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/dyke",
         },
         "man_made_embankment": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/embankment",
         },
         "man_made_gasometer": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/gasometer",
         },
         "man_made_groyne": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/groyne",
         },
         "man_made_lighthouse": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/lighthouse",
         },
         "man_made_mast": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/mast",
         },
         "man_made_mineshaft": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/mineshaft",
         },
         "man_made_observatorytelescope": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/observatorytelescope",
         },
         "man_made_petroleum_well": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/petroleum_well",
         },
         "man_made_pier": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/pier",
         },
         "man_made_pipeline": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/pipeline",
         },
         "man_made_pumping_station": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/pumping_station",
         },
         "man_made_reservoir_covered": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/reservoir_covered",
         },
         "man_made_silo": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/silo",
         },
         "man_made_snow_fence": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/snow_fence",
         },
         "man_made_storage_tank": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/storage_tank",
         },
         "man_made_tower": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/tower",
         },
         "man_made_wastewater_plant": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/wastewater_plant",
         },
         "man_made_watermill": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/watermill",
         },
         "man_made_water_tower": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/water_tower",
         },
         "man_made_water_well": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/water_well",
         },
         "man_made_water_works": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/water_works",
         },
         "man_made_windmill": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/windmill",
         },
         "man_made_works": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}man_made/works",
         },
         "military_airfield": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/airfield",
         },
         "military_ammunition": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/ammunition",
         },
         "military_barracks": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/barracks",
         },
         "military_bunker": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/bunker",
         },
         "military_checkpoint": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/checkpoint",
         },
         "military_danger_area": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/danger_area",
         },
         "military_naval_base": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/naval_base",
         },
         "military_nuclear_explosion_site": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/nuclear_explosion_site",
         },
         "military_range": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/range",
         },
         "military_trench": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}military/trench",
         },
         "power_cable": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/cable",
         },
         "power_heliostat": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/heliostat",
         },
         "power_line": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/line",
         },
         "power_substation": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/substation",
         },
         "power_xbio": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xbio",
         },
         "power_xcoal": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xcoal",
         },
         "power_xhydro": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xhydro",
         },
         "power_xnuclear": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xnuclear",
         },
         "power_xoil": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xoil",
         },
         "power_xother": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xother",
         },
         "power_xsolar": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xsolar",
         },
         "power_xwaste": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xwaste",
         },
         "power_xwind": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}power/xwind",
         },
         "waterway_canal": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/canal",
         },
         "waterway_dam": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/dam",
         },
         "waterway_ditch": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/ditch",
         },
         "waterway_drain": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/drain",
         },
         "waterway_lock_gate": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/lock_gate",
         },
         "waterway_weir": {
-            "ee_type": EETask.IMAGECOLLECTION,
+            "ee_type": HIITask.IMAGECOLLECTION,
             "ee_path": f"{ee_hiistatic_osm}waterway/weir",
         },
         "watermask": {
-            "ee_type": EETask.IMAGE,
+            "ee_type": HIITask.IMAGE,
             "ee_path": f"{ee_hiistatic_physical}watermask_jrc70_cciocean",
             "static": True,
         },
@@ -470,8 +470,9 @@ class HIIInfrastructure(EETask):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        self.set_aoi_from_ee("{}/sumatra_poc_aoi".format(self.ee_rootdir))
+        self.realm = kwargs.pop("realm", None)
+        #self.set_aoi_from_ee("{}/sumatra_poc_aoi".format(self.ee_rootdir))
+        self.set_aoi_from_ee('projects/HII/v1/source/realms/' + self.realm)  
 
     def calc(self):
         watermask = ee.Image(self.inputs["watermask"]["ee_path"])
@@ -956,7 +957,7 @@ class HIIInfrastructure(EETask):
 
         self.export_image_ee(
             current_infra,
-            "{}/{}".format(self.ee_driverdir, "hii_infrastructure_driver"),
+            "{}/{}".format(self.ee_driverdir, "aois/" + self.realm),
         )
 
     def check_inputs(self):
@@ -965,6 +966,7 @@ class HIIInfrastructure(EETask):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("-r", "--realm", default='Afrotropic')
     parser.add_argument("-d", "--taskdate", default=datetime.now(timezone.utc).date())
     options = parser.parse_args()
     infrastructure_task = HIIInfrastructure(**vars(options))
