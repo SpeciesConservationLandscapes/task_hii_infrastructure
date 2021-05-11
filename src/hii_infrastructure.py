@@ -7,6 +7,7 @@ from task_base import HIITask
 class HIIInfrastructure(HIITask):
     scale = 300
     OSM_START = datetime(2012, 9, 12).date()
+    GHSL_THRESHOLD = 2
 
     inputs = {
         "osm": {
@@ -234,6 +235,16 @@ class HIIInfrastructure(HIITask):
         self.water = ee.Image(self.inputs["water"]["ee_path"])
         self.infrastructure_cost = None
 
+    def get_ghsl_influence(self):
+        ghsl_weights = ee.Dictionary(self.infrastructure_weights["ghsl"]).toImage()
+        ghsl_influence = (
+            self.ghsl.select("built")
+            .gt(self.GHSL_THRESHOLD)
+            .multiply(ghsl_weights)
+            .rename("ghsl_influence")
+        )
+        return ghsl_influence
+
     def osm_ghsl_combined_influence(self):
         osm_band_names = self.osm.bandNames()
         osm_weights = ee.Dictionary(self.infrastructure_weights["osm"])
@@ -241,11 +252,7 @@ class HIIInfrastructure(HIITask):
         osm_weights_image = osm_weights.toImage().select(osm_bands)
         osm_infrastructure = self.osm.select(osm_bands)
         osm_influence = osm_infrastructure.multiply(osm_weights_image)
-
-        ghsl_weights = ee.Dictionary(self.infrastructure_weights["ghsl"]).toImage()
-        ghsl_influence = (
-            self.ghsl.select("built").gt(2).multiply(ghsl_weights).rename("ghsl")
-        )
+        ghsl_influence = self.get_ghsl_influence()
 
         self.infrastructure_cost = (
             osm_influence.addBands(ghsl_influence)
@@ -253,28 +260,17 @@ class HIIInfrastructure(HIITask):
             .rename("infrastructure_influence")
         )
 
-    def ghsl_influence(self):
-        ghsl_weights = ee.Dictionary(self.infrastructure_weights["ghsl"]).toImage()
-        ghsl_influence = (
-            self.ghsl.select("built")
-            .gt(2)
-            .multiply(ghsl_weights)
-            .rename("infrastructure_influence")
-        )
-
-        self.infrastructure_cost = ghsl_influence
-
     def calc(self):
         if self.osm:
             self.osm_ghsl_combined_influence()
         else:
-            self.ghsl_influence_influence()
+            self.infrastructure_cost = self.get_ghsl_influence()
 
         weighted_infrastructure = (
             self.infrastructure_cost.unmask(0)
+            .updateMask(self.water)
             .multiply(100)
             .int()
-            .updateMask(self.water)
             .rename("hii_infrastucture_driver")
         )
 

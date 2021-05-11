@@ -20,7 +20,7 @@ relative to each cell with at least one type of infrastructure. These source inf
    over time.) In the future, once GHSL's contribution is marginal enough, we will discontinue its use. Conversely,
    prior to 2012-09-12, it is the only source.
 
-We are able to use the different OSM road types to weight road influence by type, a key advance over previous Human Footprint efforts.
+We are able to use the different OSM infrastructure types to weight infrastructure influence by type, a key advance over previous Human Footprint efforts.
 
 ```
 "osm": {
@@ -237,7 +237,8 @@ SERVICE_ACCOUNT_KEY=<GOOGLE SERVICE ACCOUNT KEY>
 
 ```
 scale=300
-OSM_START=(2012-09-09)
+GHSL_THRESHOLD=2
+OSM_START = datetime(2012, 9, 12).date()
 ```
 
 ## Usage
