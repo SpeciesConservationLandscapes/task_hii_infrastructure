@@ -5,8 +5,7 @@ from task_base import HIITask
 
 
 class HIIInfrastructure(HIITask):
-    scale = 300
-    OSM_START = datetime(2012, 9, 12).date()
+    OSM_START = datetime(2014, 1, 1).date()
     GHSL_THRESHOLD = 2
 
     inputs = {
