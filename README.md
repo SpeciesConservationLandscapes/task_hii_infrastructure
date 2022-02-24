@@ -3,10 +3,14 @@ HII INFRASTUCTURE DRIVER
 
 ## What does this task do?
 
-This task calculates the (unitless) anthropogenic "influence" of human infrastructure (other than roads and railways) on the terrestrial surface as one of the key
-drivers for a combined [Human Influence Index](https://github.com/SpeciesConservationLandscapes/task_hii_weightedsum)
-. "Influence" is the `direct` influence
-relative to each cell with at least one type of infrastructure. These source infrastructure cells are a combination of:
+This task calculates the anthropogenic "influence" of human infrastructure (other than roads and railways) on the 
+terrestrial surface as one of the key drivers for a combined 
+[Human Impact Index](https://github.com/SpeciesConservationLandscapes/task_hii_weightedsum). 
+"Influence" is the `direct` influence relative to each cell with at least one type of infrastructure. 
+The output HII driver calculated by this task is, like all other HII drivers, unitless; it refers to an absolute 0-10
+scale but is not normalized to it, so the actual range of values may be smaller than 0-10.
+
+Source infrastructure data come from a combination of:
 
 1. The most recent OSM data relative to `taskdate`, as rasterized by the
    [task_hii_osm_csv](https://github.com/SpeciesConservationLandscapes/task_hii_osm_csv) and
@@ -14,13 +18,15 @@ relative to each cell with at least one type of infrastructure. These source inf
    stored in Earth Engine at `projects/HII/v1/osm/osm_image`, contains up to 193
    bands for OSM features infrastructure tags. A cell in each band has a
    value of 1 in every 300m pixel if there are any OSM features with that tag in the cell, and NoData otherwise.
-   This data is available since 2012-09-12, in steadily increasing quantity and quality.
+   This data is available since 2012-09-12, in steadily increasing quantity and quality; for HII calculations we 
+   use OSM data starting in June 2014.
 2. Static GHSL data (https://ghsl.jrc.ec.europa.eu/) representing built-up areas from
    1975-2015 are used to fill cells not marked by OSM. (Implicitly, we do not capture infrastructure that actually disappears
    over time.) In the future, once GHSL's contribution is marginal enough, we will discontinue its use. Conversely,
-   prior to 2012-09-12, it is the only source.
+   prior to 2014-06-04, it is the only source.
 
-We are able to use the different OSM infrastructure types to weight infrastructure influence by type, a key advance over previous Human Footprint efforts.
+We are able to use the different OSM infrastructure types to weight infrastructure influence by type, 
+a key advance over previous Human Footprint efforts.
 
 ```
 "osm": {
@@ -223,8 +229,9 @@ We are able to use the different OSM infrastructure types to weight infrastructu
 }
 ```
 
-For any given output cell, the end result is the maximum (**not** the cumulative addition) of each type of infrastructure. Values are multiplied by 100 and converted to integer for efficient
-exporting to and storage in the Earth Engine HII Road Driver image collection (`projects/HII/v1/driver/infrastructure`).
+For any given output cell, the end result is the maximum (**not** the cumulative addition) of each type of 
+infrastructure. Values are multiplied by 100 and converted to integer for efficient exporting to and 
+storage in the Earth Engine HII infrastructure driver image collection (`projects/HII/v1/driver/infrastructure`).
 
 ## Variables and Defaults
 
@@ -238,7 +245,7 @@ SERVICE_ACCOUNT_KEY=<GOOGLE SERVICE ACCOUNT KEY>
 ```
 scale=300
 GHSL_THRESHOLD=2
-OSM_START = datetime(2012, 9, 12).date()
+OSM_START = datetime(2014, 6, 4).date()
 ```
 
 ## Usage
@@ -255,3 +262,11 @@ optional arguments:
   --overwrite           overwrite existing outputs instead of incrementing
 
 ```
+
+### License
+Copyright (C) 2022 Wildlife Conservation Society
+The files in this repository  are part of the task framework for calculating 
+Human Impact Index and Species Conservation Landscapes (https://github.com/SpeciesConservationLandscapes) 
+and are released under the GPL license:
+https://www.gnu.org/licenses/#GPL
+See [LICENSE](./LICENSE) for details.
