@@ -3,10 +3,10 @@ HII INFRASTUCTURE DRIVER
 
 ## What does this task do?
 
-This task calculates the anthropogenic "influence" of human infrastructure (other than roads and railways) on the 
+This task calculates the anthropogenic impact of human infrastructure (other than roads and railways) on the 
 terrestrial surface as one of the key drivers for a combined 
 [Human Impact Index](https://github.com/SpeciesConservationLandscapes/task_hii_weightedsum). 
-"Influence" is the `direct` influence relative to each cell with at least one type of infrastructure. 
+"impact" is the `direct` impact relative to each cell with at least one type of infrastructure. 
 The output HII driver calculated by this task is, like all other HII drivers, unitless; it refers to an absolute 0-10
 scale but is not normalized to it, so the actual range of values may be smaller than 0-10.
 
@@ -25,7 +25,7 @@ Source infrastructure data come from a combination of:
    over time.) In the future, once GHSL's contribution is marginal enough, we will discontinue its use. Conversely,
    prior to 2014-06-04, it is the only source.
 
-We are able to use the different OSM infrastructure types to weight infrastructure influence by type, 
+We are able to use the different OSM infrastructure types to weight infrastructure impact by type, 
 a key advance over previous Human Footprint efforts.
 
 ```
@@ -260,7 +260,6 @@ optional arguments:
   -h, --help            show this help message and exit
   -d TASKDATE, --taskdate TASKDATE
   --overwrite           overwrite existing outputs instead of incrementing
-
 ```
 
 ### License
