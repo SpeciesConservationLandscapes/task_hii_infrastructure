@@ -6,7 +6,7 @@ HII INFRASTUCTURE DRIVER
 This task calculates the anthropogenic impact of human infrastructure (other than roads and railways) on the 
 terrestrial surface as one of the key drivers for a combined 
 [Human Impact Index](https://github.com/SpeciesConservationLandscapes/task_hii_weightedsum). 
-"impact" is the `direct` impact relative to each cell with at least one type of infrastructure. 
+"Impact" is the `direct` impact relative to each cell with at least one type of infrastructure. 
 The output HII driver calculated by this task is, like all other HII drivers, unitless; it refers to an absolute 0-10
 scale but is not normalized to it, so the actual range of values may be smaller than 0-10.
 
