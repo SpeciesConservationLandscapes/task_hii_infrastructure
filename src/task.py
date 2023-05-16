@@ -233,6 +233,8 @@ class HIIInfrastructure(HIITask):
         self.ghsl = ee.Image(self.inputs["ghsl"]["ee_path"])
         self.water = ee.Image(self.inputs["water"]["ee_path"])
         self.infrastructure_cost = None
+        self.export_path = None
+        self.noosm = kwargs.get("noosm", False)
 
     def get_ghsl_influence(self):
         ghsl_weights = ee.Dictionary(self.infrastructure_weights["ghsl"]).toImage()
@@ -253,15 +255,15 @@ class HIIInfrastructure(HIITask):
         osm_influence = osm_infrastructure.multiply(osm_weights_image)
         ghsl_influence = self.get_ghsl_influence()
 
-        self.infrastructure_cost = (
+        return (
             osm_influence.addBands(ghsl_influence)
             .reduce(ee.Reducer.max())
             .rename("infrastructure_influence")
         )
 
     def calc(self):
-        if self.osm:
-            self.osm_ghsl_combined_influence()
+        if self.osm and self.noosm is False:
+            self.infrastructure_cost = self.osm_ghsl_combined_influence()
         else:
             self.infrastructure_cost = self.get_ghsl_influence()
 
@@ -273,9 +275,14 @@ class HIIInfrastructure(HIITask):
             .rename("hii_infrastucture_driver")
         )
 
+        if self.noosm is False:
+            self.export_path = f"driver/infrastructure"
+        else:
+            self.export_path = f"driver/infrastructure_no_osm"
+
         self.export_image_ee(
             weighted_infrastructure,
-            f"driver/infrastructure",
+            self.export_path,
         )
 
     def check_inputs(self):
@@ -290,6 +297,12 @@ if __name__ == "__main__":
         "--overwrite",
         action="store_true",
         help="overwrite existing outputs instead of incrementing",
+    )
+    parser.add_argument(
+        "-n",
+        "--noosm",
+        action="store_true",
+        help="do not include osm in driver calculation",
     )
     options = parser.parse_args()
     infrastructure_task = HIIInfrastructure(**vars(options))
